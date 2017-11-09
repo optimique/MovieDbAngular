@@ -120,7 +120,9 @@
       vm.torrentsLoading = true;
 
       return moviesService.getTorrentInfo(vm.movie).then(function(response){
-        vm.movie.torrents = response.data.data.movies.length ? response.data.data.movies[0].torrents : [];
+        vm.movie.torrents = response != null && response.data.data.movies != null && response.data.data.movies.length
+                              ? response.data.data.movies[0].torrents
+                              : [];
         vm.torrentsLoading = false;
       }, function(){
         vm.torrentsLoading = false;

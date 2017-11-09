@@ -190,19 +190,20 @@
     function getTorrentInfo(movie) {
       var url = 'https://yts.ag/api/v2/list_movies.json';
 
-      return $http.get(url, { 
+      return $http.get(url, {
         cache: true,
         params: {
           query_term: movie.imdb_id
         }})
-        .then(function(data){
+        .success(function(data){
           _.each(data.data.data.movies, function(movie){
             _.each(movie.torrents, function(torrent){
               torrent.magnet_link = generateMagnetLink(movie.title_long, torrent.hash);
             }, this);
             $q.resolve(data.data);
           }, this);
-        }, function(error){
+        })
+          .error(function(error){
           return $q.reject(error);
         });
     }
