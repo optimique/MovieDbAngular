@@ -92,7 +92,8 @@
       }
     ])
     .constant('API_SETTINGS', {
-      url           : 'api/v3',
+      // url           : 'api/v3',
+      url           : 'mdb-api/v3',
       baseImageUrl  : 'https://image.tmdb.org/t/p/'
     })
     .constant('PAGINATION_SETTINGS', {
